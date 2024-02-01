@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+
+if (( $# == 1 )); then
+  selected="$1"
+else
+  local myarray=("${(@f)$(< ~/.config/tmux-sessionizer/config.txt)}")
+  selected=`find ${(@)~myarray} -maxdepth 1 -type d -printf '\033[1;34m%p\033[0m\n' | fzf --preview 'eza -a --tree --level=1 {}'`
+fi
+
+if [[ -z "$selected" ]]; then
+	exit 1
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z "$tmux_running" ]]; then
+	tmux new-session -s "$selected_name" -c "$selected"
+	exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+	tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+unset tmux_running
+unset selected
+
+tmux switch-client -t "$selected_name"

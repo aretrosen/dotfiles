@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+swayidle -w \
+	timeout 300 'swaylock' \
+	timeout 450 'hyprctl dispatch dpms off' \
+	resume 'hyprctl dispatch dpms on' \
+	timeout 600 'systemctl suspend' \
+	timeout 30 'if pgrep swaylock &>/dev/null; then hyprctl dispatch dpms off; fi' \
+	resume 'if pgrep swaylock &>/dev/null; then hyprctl dispatch dpms on; fi' \
+	before-sleep 'swaylock'

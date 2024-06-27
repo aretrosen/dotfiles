@@ -1,0 +1,6 @@
+channels:
+  - pytorch-nightly
+  - nvidia
+  - conda-forge
+  - nodefaults
+channel_priority: strict

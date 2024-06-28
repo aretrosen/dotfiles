@@ -1,3 +1,6 @@
 [submodule ".config/zsh"]
 	path = .config/zsh
 	url = git@github.com:aretrosen/zsh.git
+[submodule ".config/emacs"]
+	path = .config/emacs
+	url = git@github.com:aretrosen/emacs.git

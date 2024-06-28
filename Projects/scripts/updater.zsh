@@ -176,6 +176,10 @@ if command -v tldr &> /dev/null; then
 fi
 
 
+if command -v getnf &> /dev/null; then
+	getnf -U
+fi
+
 _update_fzf() {
     local fzf_dir="$XDG_DATA_HOME/fzf"
 
@@ -209,7 +213,7 @@ yes | mix archive.install hex phx_new || {
 }
 
 
-flatpak update --assume-yes || {
+flatpak update --assumeyes || {
     _perr "Could not update flatpak packages"
     exit 1
 }

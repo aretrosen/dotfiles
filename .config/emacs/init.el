@@ -10,5 +10,3 @@
 (menu-bar-mode -1)
 
 (setq native-comp-speed 3)
-
-

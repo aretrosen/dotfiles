@@ -5,7 +5,6 @@ python_compile = true
 [tools]
 usage = "latest"
 deno = "latest"
-rust = "nightly"
 elixir = "latest"
-erlang = "27.0"
 go = "latest"
+erlang = "latest"

@@ -1,0 +1,2 @@
+/home/aritro/micromamba/envs/aiml
+/home/aritro/micromamba/envs/just-cuda
